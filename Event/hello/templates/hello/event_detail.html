@@ -1,0 +1,27 @@
+{% extends "hello/layout.html" %}
+{% block title %}Event Details{% endblock %}
+{% block content %}
+<h2>{{ event.title }}</h2>
+<p><strong>Description:</strong> {{ event.description }}</p>
+<p><strong>Location:</strong> {{ event.location }}</p>
+<p><strong>Start:</strong> {{ event.start_time|date:'d M Y H:i' }}</p>
+<p><strong>End:</strong> {{ event.end_time|date:'d M Y H:i' }}</p>
+
+<p><strong>Organizer:</strong> {{ event.organizer.username }}</p>
+<p><strong>Tickets:</strong> {{ event.tickets }} | <strong>Available:</strong> {{ event.available_tickets }}</p>
+
+{% if user.is_authenticated %}
+    {% if registered %}
+        <p>You are registered for this event. <form method="post" action="{% url 'cancel_registration' registration_id %}">{% csrf_token %}<button type="submit">Cancel Registration</button></form></p>
+    {% else %}
+        <form method="post" action="{% url 'register_event' event.id %}">{% csrf_token %}<button type="submit">Register for this Event</button></form>
+    {% endif %}
+    <form method="post" action="{% url 'logout' %}?next={% url 'event_detail' event.id %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+{% else %}
+    <p><a href="{% url 'login' %}?next={% url 'event_detail' event.id %}">Login</a> to register.</p>
+    <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a>.</p>
+{% endif %}
+{% endblock %}
