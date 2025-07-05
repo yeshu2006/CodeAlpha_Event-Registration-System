@@ -1,35 +1,41 @@
-🚀 Features
-🔐 User Authentication
+# 🎟️ Event Registration System
 
-Sign up for a new account
+A Django-based web application where users can **view events**, **see available tickets**, and **register** for events after **signing up or logging in**.
 
-Log in securely with your credentials
+## 🔑 Features
 
-Log out anytime
+- 👤 User Authentication (Login / Signup / Logout)
+- 📅 Event Listings with Date, Time, and Description
+- 🎫 Real-time Ticket Availability
+- 📝 User Registration for Events
+- 🛡️ Admin Panel to Manage Events and Registrations
 
-📅 Event Listings
+## 🛠️ Tech Stack
 
-View all upcoming events
+- **Backend:** Django, Django REST Framework  
+- **Frontend:** HTML, CSS (optional: Bootstrap or JS)  
+- **Database:** SQLite (easily switchable to PostgreSQL)  
+- **Auth System:** Django's built-in authentication
 
-Each event displays key information: title, description, date & time, and available tickets
+## 🚀 Getting Started
 
-🎫 Ticket Booking
+Follow these steps to run the project locally:
 
-Users can register for events based on ticket availability
+```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/event-registration-system.git
+cd event-registration-system
 
-Seats automatically decrease after registration
+# 2. Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-👨‍💼 Admin Panel
+# 3. Install dependencies
+pip install -r requirements.txt
 
-Add, update, or delete events
+# 4. Apply migrations
+python manage.py makemigrations
+python manage.py migrate
 
-Monitor registrations and ticket status
-
-🛠️ Tech Stack
-Backend: Django, Django REST Framework
-
-Frontend: HTML/CSS or JavaScript (optional for frontend rendering)
-
-Database: SQLite (can be upgraded to PostgreSQL)
-
-Authentication: Django default auth system
+# 5. Start the development server
+python manage.py runserver
